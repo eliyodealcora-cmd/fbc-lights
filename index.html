@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>FBC Lights</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>FBC Lights</h1>
+  <p>Especialistas en Techos Estrellados Personalizados para tu coche.</p>
+
+  <div class="galeria">
+    <img src="imagenes/techo1.jpg" alt="Techo estrellado 1" onclick="abrirModal(this.src)">
+    <img src="imagenes/techo2.jpg" alt="Techo estrellado 2" onclick="abrirModal(this.src)">
+    <img src="imagenes/techo3.jpg" alt="Techo estrellado 3" onclick="abrirModal(this.src)">
+    <img src="imagenes/techo4.jpg" alt="Techo estrellado 4" onclick="abrirModal(this.src)">
+  </div>
+
+  <!-- MODAL PRESUPUESTO -->
+  <div id="modal" class="modal">
+    <div class="modal-contenido">
+      <span class="cerrar" onclick="cerrarModal()">×</span>
+
+      <img id="modal-img" src="" alt="Techo estrellado">
+
+      <h2>Presupuesto estimado</h2>
+
+      <label>
+        Número de estrellas:
+        <select id="tamano" onchange="calcularPrecio()">
+          <option value="0">Selecciona</option>
+          <option value="499">⭐ 500 estrellas – 499 €</option>
+          <option value="550">⭐ 600 estrellas – 550 €</option>
+          <option value="700">⭐ 750 estrellas – 700 €</option>
+          <option value="850">⭐ 1200 estrellas – 850 €</option>
+          <option value="1450">⭐ 2000 estrellas – 1450 €</option>
+        </select>
+      </label>
+
+      <label style="margin-top:10px; display:block;">
+        <input type="checkbox" id="fugaces" onchange="calcularPrecio()">
+        Estrellas fugaces 💫 +120 €
+      </label>
+
+      <p class="precio">
+        Precio total: <strong><span id="precio">0</span> €</strong>
+      </p>
+
+      <button onclick="enviarWhatsApp()" style="
+        margin-top:15px;
+        padding:12px 20px;
+        border-radius:8px;
+        border:none;
+        background:#25D366;
+        color:white;
+        font-size:16px;
+        cursor:pointer;">
+        Enviar presupuesto por WhatsApp
+      </button>
+
+    </div>
+  </div>
+
+  <script>
+    function abrirModal(srcImagen) {
+      const modal = document.getElementById("modal");
+      const modalImg = document.getElementById("modal-img");
+
+      modal.style.display = "flex";
+      modalImg.src = srcImagen;
+
+      document.getElementById("precio").innerText = "0";
+      document.getElementById("tamano").value = "0";
+      document.getElementById("fugaces").checked = false;
+    }
+
+    function cerrarModal() {
+      document.getElementById("modal").style.display = "none";
+    }
+
+    function calcularPrecio() {
+      const base = Number(document.getElementById("tamano").value);
+      const fugaces = document.getElementById("fugaces").checked ? 120 : 0;
+      const total = base + fugaces;
+
+      document.getElementById("precio").innerText = total;
+    }
+
+    function enviarWhatsApp() {
+      const select = document.getElementById("tamano");
+      const opcionTexto = select.options[select.selectedIndex].text;
+      const precio = document.getElementById("precio").innerText;
+      const fugaces = document.getElementById("fugaces").checked ? " + Estrellas fugaces 💫" : "";
+
+      const mensaje = `Hola, me gustaría un techo estrellado:\n${opcionTexto}${fugaces}\nPrecio total: ${precio} €`;
+
+      const telefono = "34643960819";
+      const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+
+      window.open(url, "_blank");
+    }
+  </script>
+
+</body>
+</html>
