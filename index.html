@@ -10,11 +10,29 @@
   <h1>FBC Lights</h1>
   <p>Especialistas en Techos Estrellados Personalizados para tu coche.</p>
 
+  <!-- BOTÓN WHATSAPP -->
+  <a 
+    class="btn-whatsapp"
+    href="https://wa.me/34643960819?text=Hola%20quiero%20información%20y%20presupuesto%20para%20un%20techo%20estrellado"
+    target="_blank"
+  >
+    💬 Pide tu presupuesto por WhatsApp
+  </a>
+
+  <!-- GALERÍA -->
   <div class="galeria">
     <img src="imagenes/techo1.jpg" alt="Techo estrellado 1" onclick="abrirModal(this.src)">
     <img src="imagenes/techo2.jpg" alt="Techo estrellado 2" onclick="abrirModal(this.src)">
     <img src="imagenes/techo3.jpg" alt="Techo estrellado 3" onclick="abrirModal(this.src)">
     <img src="imagenes/techo4.jpg" alt="Techo estrellado 4" onclick="abrirModal(this.src)">
+  </div>
+
+  <!-- BLOQUE DE CONFIANZA -->
+  <div class="confianza">
+    <div class="item-confianza">⭐ Instalación profesional</div>
+    <div class="item-confianza">💎 Material premium</div>
+    <div class="item-confianza">🚗 Todo tipo de coches</div>
+    <div class="item-confianza">✨ Personalización total</div>
   </div>
 
   <!-- MODAL PRESUPUESTO -->
@@ -27,52 +45,41 @@
       <h2>Presupuesto estimado</h2>
 
       <label>
-        Número de estrellas:
+        Estrellas:
         <select id="tamano" onchange="calcularPrecio()">
           <option value="0">Selecciona</option>
-          <option value="499">⭐ 500 estrellas – 499 €</option>
-          <option value="550">⭐ 600 estrellas – 550 €</option>
-          <option value="700">⭐ 750 estrellas – 700 €</option>
-          <option value="850">⭐ 1200 estrellas – 850 €</option>
-          <option value="1450">⭐ 2000 estrellas – 1450 €</option>
+          <option value="499">⭐ 500 estrellas</option>
+          <option value="550">⭐ 600 estrellas</option>
+          <option value="700">⭐ 750 estrellas</option>
+          <option value="850">⭐ 1200 estrellas</option>
+          <option value="1450">⭐ 2000 estrellas</option>
         </select>
       </label>
 
-      <label style="margin-top:10px; display:block;">
-        <input type="checkbox" id="fugaces" onchange="calcularPrecio()">
-        Estrellas fugaces 💫 +120 €
-      </label>
-
       <p class="precio">
-        Precio total: <strong><span id="precio">0</span> €</strong>
+        Precio: <strong><span id="precio">0</span> €</strong>
       </p>
 
-      <button onclick="enviarWhatsApp()" style="
-        margin-top:15px;
-        padding:12px 20px;
-        border-radius:8px;
-        border:none;
-        background:#25D366;
-        color:white;
-        font-size:16px;
-        cursor:pointer;">
-        Enviar presupuesto por WhatsApp
-      </button>
+      <p class="extra">💫 Estrellas fugaces: +120 €</p>
 
+      <a 
+        id="whatsapp-presupuesto"
+        class="btn-whatsapp"
+        href="#"
+        target="_blank"
+      >
+        Enviar presupuesto por WhatsApp
+      </a>
     </div>
   </div>
 
+  <!-- SCRIPT -->
   <script>
     function abrirModal(srcImagen) {
-      const modal = document.getElementById("modal");
-      const modalImg = document.getElementById("modal-img");
-
-      modal.style.display = "flex";
-      modalImg.src = srcImagen;
-
-      document.getElementById("precio").innerText = "0";
+      document.getElementById("modal").style.display = "flex";
+      document.getElementById("modal-img").src = srcImagen;
       document.getElementById("tamano").value = "0";
-      document.getElementById("fugaces").checked = false;
+      document.getElementById("precio").innerText = "0";
     }
 
     function cerrarModal() {
@@ -80,25 +87,14 @@
     }
 
     function calcularPrecio() {
-      const base = Number(document.getElementById("tamano").value);
-      const fugaces = document.getElementById("fugaces").checked ? 120 : 0;
-      const total = base + fugaces;
+      const precio = document.getElementById("tamano").value;
+      document.getElementById("precio").innerText = precio;
 
-      document.getElementById("precio").innerText = total;
-    }
-
-    function enviarWhatsApp() {
-      const select = document.getElementById("tamano");
-      const opcionTexto = select.options[select.selectedIndex].text;
-      const precio = document.getElementById("precio").innerText;
-      const fugaces = document.getElementById("fugaces").checked ? " + Estrellas fugaces 💫" : "";
-
-      const mensaje = `Hola, me gustaría un techo estrellado:\n${opcionTexto}${fugaces}\nPrecio total: ${precio} €`;
-
-      const telefono = "34643960819";
-      const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
-
-      window.open(url, "_blank");
+      if (precio > 0) {
+        const mensaje = `Hola, quiero un techo estrellado con precio ${precio}€ (+ estrellas fugaces opcional).`;
+        const url = `https://wa.me/34643960819?text=${encodeURIComponent(mensaje)}`;
+        document.getElementById("whatsapp-presupuesto").href = url;
+      }
     }
   </script>
 
