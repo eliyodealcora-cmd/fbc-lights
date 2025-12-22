@@ -3,57 +3,73 @@
 <head>
   <meta charset="UTF-8">
   <title>FBC Lights | Techos estrellados personalizados</title>
-  <meta name="description" content="FBC Lights - Especialistas en techos estrellados personalizados para coches. Instalación profesional, materiales premium y presupuestos por WhatsApp.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO básico -->
+  <meta name="description" content="Especialistas en techos estrellados personalizados para coches. Instalación profesional, material premium y presupuesto por WhatsApp.">
+  <meta name="keywords" content="techo estrellado coche, estrellas coche, fibra óptica coche, fbc lights">
+  <meta name="author" content="FBC Lights">
+
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <h1>FBC Lights</h1>
-  <p>Especialistas en Techos Estrellados Personalizados para tu coche.</p>
-
-  <!-- BOTÓN WHATSAPP PRINCIPAL -->
-  <a 
-    class="btn-whatsapp"
-    href="https://wa.me/34643960819?text=Hola%20quiero%20información%20y%20presupuesto%20para%20un%20techo%20estrellado"
-    target="_blank"
-  >
-    💬 Pide tu presupuesto por WhatsApp
-  </a>
+  <!-- HERO -->
+  <header class="hero">
+    <h1>FBC Lights</h1>
+    <p>Especialistas en Techos Estrellados Personalizados para tu coche.</p>
+    <button class="btn-whatsapp" onclick="abrirModal()">Pide tu presupuesto por WhatsApp</button>
+  </header>
 
   <!-- GALERÍA -->
-  <div class="galeria">
-    <img src="imagenes/techo1.jpg" alt="Techo estrellado coche" onclick="abrirModal(this.src)">
-    <img src="imagenes/techo2.jpg" alt="Techo estrellado personalizado" onclick="abrirModal(this.src)">
-    <img src="imagenes/techo3.jpg" alt="Instalación techo estrellado" onclick="abrirModal(this.src)">
-    <img src="imagenes/techo4.jpg" alt="Techo estrellado FBC Lights" onclick="abrirModal(this.src)">
-  </div>
+  <section class="galeria">
+    <img src="imagenes/techo1.jpg" alt="Techo estrellado coche">
+    <img src="imagenes/techo2.jpg" alt="Techo estrellado fibra óptica">
+    <img src="imagenes/techo3.jpg" alt="Techo estrellado interior coche">
+    <img src="imagenes/techo4.jpg" alt="Techo estrellado premium">
+  </section>
 
-  <!-- BLOQUE DE CONFIANZA -->
-  <div class="confianza">
-    <div class="item-confianza">⭐ Instalación profesional</div>
-    <div class="item-confianza">💎 Material premium</div>
-    <div class="item-confianza">🚗 Todo tipo de coches</div>
-    <div class="item-confianza">✨ Personalización total</div>
-  </div>
+  <!-- BLOQUE CONFIANZA -->
+  <section class="confianza">
+    <div>⭐ Instalación profesional</div>
+    <div>💎 Material premium</div>
+    <div>🚗 Todo tipo de coches</div>
+    <div>✨ Personalización total</div>
+  </section>
+
+  <!-- QUIÉNES SOMOS -->
+  <section class="quienes-somos">
+    <h2>¿Quiénes somos?</h2>
+    <p>
+      En <strong>FBC Lights</strong> somos especialistas en la instalación de techos estrellados para vehículos.
+      Trabajamos con fibra óptica de alta calidad y cuidamos cada detalle para ofrecer un resultado espectacular,
+      elegante y totalmente personalizado.
+    </p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="aviso-legal.html">Aviso legal</a> |
+    <a href="privacidad.html">Política de privacidad</a> |
+    <a href="cookies.html">Política de cookies</a>
+  </footer>
 
   <!-- MODAL PRESUPUESTO -->
   <div id="modal" class="modal">
     <div class="modal-contenido">
       <span class="cerrar" onclick="cerrarModal()">×</span>
 
-      <img id="modal-img" src="" alt="Techo estrellado">
-
       <h2>Presupuesto estimado</h2>
 
       <label>
         Número de estrellas:
-        <select id="tamano" onchange="calcularPrecio()">
-          <option value="0">Selecciona</option>
-          <option value="499">⭐ 500 estrellas – 499 €</option>
-          <option value="550">⭐ 600 estrellas – 550 €</option>
-          <option value="700">⭐ 750 estrellas – 700 €</option>
-          <option value="850">⭐ 1200 estrellas – 850 €</option>
-          <option value="1450">⭐ 2000 estrellas – 1450 €</option>
+        <select id="estrellas" onchange="calcularPrecio()">
+          <option value="">Selecciona</option>
+          <option value="500">⭐ 500 estrellas – 499 €</option>
+          <option value="600">⭐ 600 estrellas – 550 €</option>
+          <option value="750">⭐ 750 estrellas – 700 €</option>
+          <option value="1200">⭐ 1200 estrellas – 850 €</option>
+          <option value="2000">⭐ 2000 estrellas – 1450 €</option>
         </select>
       </label>
 
@@ -61,44 +77,31 @@
         Precio total: <strong><span id="precio">0</span> €</strong>
       </p>
 
-      <a 
-        id="whatsapp-presupuesto"
-        class="btn-whatsapp"
-        href="#"
-        target="_blank"
-      >
-        Enviar presupuesto por WhatsApp
-      </a>
+      <p class="nota-precio">
+        💡 El precio puede variar según el modelo del vehículo y opciones adicionales.
+      </p>
+
+      <button class="btn-whatsapp" onclick="enviarWhatsApp()">Enviar presupuesto por WhatsApp</button>
+
+      <p class="whatsapp-info">
+        📲 Respuesta rápida por WhatsApp <br>
+        ⏱️ Normalmente contestamos en menos de 24h
+      </p>
     </div>
   </div>
 
-  <!-- FOOTER -->
-  <footer style="margin-top:60px; font-size:14px; opacity:0.8;">
-    <a href="quienes-somos.html">Quiénes somos</a> |
-    <a href="aviso-legal.html">Aviso legal</a> |
-    <a href="privacidad.html">Política de privacidad</a> |
-    <a href="cookies.html">Política de cookies</a>
-  </footer>
-
-  <!-- BANNER DE COOKIES -->
-  <div id="cookie-banner">
-    <p>
-      Utilizamos cookies técnicas para mejorar la experiencia del usuario.
-      <a href="cookies.html">Más información</a>
-    </p>
-    <div class="cookie-buttons">
-      <button id="accept-cookies">Aceptar</button>
-      <button id="reject-cookies">Rechazar</button>
-    </div>
+  <!-- COOKIES -->
+  <div id="cookies" class="cookies">
+    Utilizamos cookies técnicas para mejorar la experiencia del usuario.
+    <a href="cookies.html">Más información</a>
+    <button onclick="aceptarCookies()">Aceptar</button>
+    <button onclick="rechazarCookies()">Rechazar</button>
   </div>
 
   <!-- SCRIPTS -->
   <script>
-    function abrirModal(srcImagen) {
+    function abrirModal() {
       document.getElementById("modal").style.display = "flex";
-      document.getElementById("modal-img").src = srcImagen;
-      document.getElementById("tamano").value = "0";
-      document.getElementById("precio").innerText = "0";
     }
 
     function cerrarModal() {
@@ -106,34 +109,49 @@
     }
 
     function calcularPrecio() {
-      const precio = document.getElementById("tamano").value;
+      const estrellas = document.getElementById("estrellas").value;
+      let precio = 0;
+
+      if (estrellas == 500) precio = 499;
+      if (estrellas == 600) precio = 550;
+      if (estrellas == 750) precio = 700;
+      if (estrellas == 1200) precio = 850;
+      if (estrellas == 2000) precio = 1450;
+
       document.getElementById("precio").innerText = precio;
-
-      if (precio > 0) {
-        const mensaje = `Hola, quiero un techo estrellado con precio ${precio}€.`;
-        const url = `https://wa.me/34643960819?text=${encodeURIComponent(mensaje)}`;
-        document.getElementById("whatsapp-presupuesto").href = url;
-      }
     }
 
-    // Cookies
-    const banner = document.getElementById("cookie-banner");
-    const acceptBtn = document.getElementById("accept-cookies");
-    const rejectBtn = document.getElementById("reject-cookies");
+    function enviarWhatsApp() {
+      const estrellas = document.getElementById("estrellas").value;
+      const precio = document.getElementById("precio").innerText;
 
-    if (localStorage.getItem("cookiesAccepted")) {
-      banner.style.display = "none";
+      let mensaje =
+`Hola 👋
+Quiero información y presupuesto para un techo estrellado.
+
+✨ Número de estrellas: ${estrellas}
+💰 Precio estimado: ${precio} €
+
+🚗 Modelo de coche:
+📍 Ciudad:`;
+
+      const telefono = "34643960819";
+      const url = "https://wa.me/" + telefono + "?text=" + encodeURIComponent(mensaje);
+      window.open(url, "_blank");
     }
 
-    acceptBtn.addEventListener("click", () => {
-      localStorage.setItem("cookiesAccepted", "true");
-      banner.style.display = "none";
-    });
+    function aceptarCookies() {
+      document.getElementById("cookies").style.display = "none";
+      localStorage.setItem("cookiesAceptadas", "true");
+    }
 
-    rejectBtn.addEventListener("click", () => {
-      localStorage.setItem("cookiesAccepted", "false");
-      banner.style.display = "none";
-    });
+    function rechazarCookies() {
+      document.getElementById("cookies").style.display = "none";
+    }
+
+    if (localStorage.getItem("cookiesAceptadas")) {
+      document.getElementById("cookies").style.display = "none";
+    }
   </script>
 
 </body>
