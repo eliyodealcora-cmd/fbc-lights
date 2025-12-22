@@ -2,7 +2,8 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>FBC Lights</title>
+  <title>FBC Lights | Techos estrellados personalizados</title>
+  <meta name="description" content="FBC Lights - Especialistas en techos estrellados personalizados para coches. Instalación profesional, materiales premium y presupuestos por WhatsApp.">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -10,7 +11,7 @@
   <h1>FBC Lights</h1>
   <p>Especialistas en Techos Estrellados Personalizados para tu coche.</p>
 
-  <!-- BOTÓN WHATSAPP -->
+  <!-- BOTÓN WHATSAPP PRINCIPAL -->
   <a 
     class="btn-whatsapp"
     href="https://wa.me/34643960819?text=Hola%20quiero%20información%20y%20presupuesto%20para%20un%20techo%20estrellado"
@@ -21,10 +22,10 @@
 
   <!-- GALERÍA -->
   <div class="galeria">
-    <img src="imagenes/techo1.jpg" alt="Techo estrellado 1" onclick="abrirModal(this.src)">
-    <img src="imagenes/techo2.jpg" alt="Techo estrellado 2" onclick="abrirModal(this.src)">
-    <img src="imagenes/techo3.jpg" alt="Techo estrellado 3" onclick="abrirModal(this.src)">
-    <img src="imagenes/techo4.jpg" alt="Techo estrellado 4" onclick="abrirModal(this.src)">
+    <img src="imagenes/techo1.jpg" alt="Techo estrellado coche" onclick="abrirModal(this.src)">
+    <img src="imagenes/techo2.jpg" alt="Techo estrellado personalizado" onclick="abrirModal(this.src)">
+    <img src="imagenes/techo3.jpg" alt="Instalación techo estrellado" onclick="abrirModal(this.src)">
+    <img src="imagenes/techo4.jpg" alt="Techo estrellado FBC Lights" onclick="abrirModal(this.src)">
   </div>
 
   <!-- BLOQUE DE CONFIANZA -->
@@ -45,22 +46,20 @@
       <h2>Presupuesto estimado</h2>
 
       <label>
-        Estrellas:
+        Número de estrellas:
         <select id="tamano" onchange="calcularPrecio()">
           <option value="0">Selecciona</option>
-          <option value="499">⭐ 500 estrellas</option>
-          <option value="550">⭐ 600 estrellas</option>
-          <option value="700">⭐ 750 estrellas</option>
-          <option value="850">⭐ 1200 estrellas</option>
-          <option value="1450">⭐ 2000 estrellas</option>
+          <option value="499">⭐ 500 estrellas – 499 €</option>
+          <option value="550">⭐ 600 estrellas – 550 €</option>
+          <option value="700">⭐ 750 estrellas – 700 €</option>
+          <option value="850">⭐ 1200 estrellas – 850 €</option>
+          <option value="1450">⭐ 2000 estrellas – 1450 €</option>
         </select>
       </label>
 
       <p class="precio">
-        Precio: <strong><span id="precio">0</span> €</strong>
+        Precio total: <strong><span id="precio">0</span> €</strong>
       </p>
-
-      <p class="extra">💫 Estrellas fugaces: +120 €</p>
 
       <a 
         id="whatsapp-presupuesto"
@@ -73,7 +72,27 @@
     </div>
   </div>
 
-  <!-- SCRIPT -->
+  <!-- FOOTER -->
+  <footer style="margin-top:60px; font-size:14px; opacity:0.8;">
+    <a href="quienes-somos.html">Quiénes somos</a> |
+    <a href="aviso-legal.html">Aviso legal</a> |
+    <a href="privacidad.html">Política de privacidad</a> |
+    <a href="cookies.html">Política de cookies</a>
+  </footer>
+
+  <!-- BANNER DE COOKIES -->
+  <div id="cookie-banner">
+    <p>
+      Utilizamos cookies técnicas para mejorar la experiencia del usuario.
+      <a href="cookies.html">Más información</a>
+    </p>
+    <div class="cookie-buttons">
+      <button id="accept-cookies">Aceptar</button>
+      <button id="reject-cookies">Rechazar</button>
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
   <script>
     function abrirModal(srcImagen) {
       document.getElementById("modal").style.display = "flex";
@@ -91,18 +110,31 @@
       document.getElementById("precio").innerText = precio;
 
       if (precio > 0) {
-        const mensaje = `Hola, quiero un techo estrellado con precio ${precio}€ (+ estrellas fugaces opcional).`;
+        const mensaje = `Hola, quiero un techo estrellado con precio ${precio}€.`;
         const url = `https://wa.me/34643960819?text=${encodeURIComponent(mensaje)}`;
         document.getElementById("whatsapp-presupuesto").href = url;
       }
     }
+
+    // Cookies
+    const banner = document.getElementById("cookie-banner");
+    const acceptBtn = document.getElementById("accept-cookies");
+    const rejectBtn = document.getElementById("reject-cookies");
+
+    if (localStorage.getItem("cookiesAccepted")) {
+      banner.style.display = "none";
+    }
+
+    acceptBtn.addEventListener("click", () => {
+      localStorage.setItem("cookiesAccepted", "true");
+      banner.style.display = "none";
+    });
+
+    rejectBtn.addEventListener("click", () => {
+      localStorage.setItem("cookiesAccepted", "false");
+      banner.style.display = "none";
+    });
   </script>
-<footer style="margin-top:60px; font-size:14px; opacity:0.8;">
-  <footer style="margin-top:40px; font-size:14px; opacity:0.8;">
-  <a href="aviso-legal.html">Aviso legal</a> |
-  <a href="politica-privacidad.html">Política de privacidad</a> |
-  <a href="politica-cookies.html">Política de cookies</a> |
-  <a href="quienes-somos.html">Quiénes somos</a>
-</footer>
+
 </body>
 </html>

@@ -163,3 +163,55 @@ select {
   font-weight: 600;
   box-shadow: 0 0 10px rgba(255,255,255,0.05);
 }
+/* Banner de cookies */
+#cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #111;
+  color: #fff;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  z-index: 9999;
+  font-size: 14px;
+}
+
+#cookie-banner a {
+  color: #4caf50;
+  text-decoration: underline;
+}
+
+.cookie-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.cookie-buttons button {
+  padding: 8px 14px;
+  border: none;
+  cursor: pointer;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+#accept-cookies {
+  background: #4caf50;
+  color: #000;
+}
+
+#reject-cookies {
+  background: #555;
+  color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #cookie-banner {
+    flex-direction: column;
+    text-align: center;
+  }
+}
