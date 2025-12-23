@@ -1,241 +1,265 @@
+/* RESET */
 * {
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', system-ui, sans-serif;
 }
 
-/* 🌌 FONDO PROFUNDO CINE */
 body {
-  margin: 0;
-  background: radial-gradient(circle at top, #080a1f, #01020a);
+  background: radial-gradient(circle at top, #050510 0%, #020207 40%, #000 100%);
   color: #fff;
   text-align: center;
   overflow-x: hidden;
 }
 
-/* 🌟 ESTRELLAS MULTICAPA + MOVIMIENTO */
-body::before {
+/* ===== FONDO DE ESTRELLAS ANIMADAS ===== */
+body::before,
+body::after {
   content: "";
   position: fixed;
   inset: 0;
-  background:
-    radial-gradient(1.2px 1.2px at 10% 20%, #ffffff, transparent),
-    radial-gradient(1.4px 1.4px at 30% 80%, #cfd8ff, transparent),
-    radial-gradient(1.6px 1.6px at 50% 40%, #ffffff, transparent),
-    radial-gradient(1.3px 1.3px at 70% 10%, #e0e6ff, transparent),
-    radial-gradient(1.5px 1.5px at 90% 60%, #ffffff, transparent),
-    radial-gradient(1.2px 1.2px at 40% 60%, #cfd8ff, transparent),
-    radial-gradient(1.4px 1.4px at 60% 90%, #ffffff, transparent);
-  background-size: 160px 160px;
-  animation: estrellas 85s linear infinite;
-  opacity: 0.7;
+  background-image:
+    radial-gradient(2px 2px at 20% 30%, rgba(180,200,255,.9), transparent),
+    radial-gradient(2px 2px at 80% 40%, rgba(200,150,255,.9), transparent),
+    radial-gradient(1.5px 1.5px at 60% 70%, rgba(150,200,255,.8), transparent),
+    radial-gradient(1px 1px at 30% 80%, rgba(255,255,255,.7), transparent);
+  animation: estrellas 25s linear infinite;
   pointer-events: none;
   z-index: -1;
-  filter: drop-shadow(0 0 6px rgba(180,200,255,0.9));
+}
+
+body::after {
+  animation-duration: 40s;
+  opacity: 0.6;
 }
 
 @keyframes estrellas {
   from { transform: translateY(0); }
-  to { transform: translateY(-1400px); }
+  to { transform: translateY(-200px); }
 }
 
-/* ✨ APARICIONES SUAVES */
-.hero,
-.hero-img,
-.como-trabajamos,
-.galeria,
-.confianza,
-.quienes-somos {
-  animation: fadeUp 1.3s ease forwards;
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(28px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* 🎬 HERO (PREPARADO PARA VÍDEO) */
+/* ===== HERO ===== */
 .hero {
-  padding: 40px 20px;
-  position: relative;
-  z-index: 1;
+  padding: 50px 20px 30px;
 }
 
-/* Si en el futuro añades <video class="hero-video"> */
-.hero-video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
-  opacity: 0.25;
-  filter: blur(1px);
-}
-
-/* LOGO */
-.logo {
-  width: 140px;
-  margin-bottom: 15px;
-}
-
-/* TÍTULO */
-.titulo {
-  font-size: 46px;
-  background: linear-gradient(90deg, #9bb6ff, #cfa3ff);
+.hero h1 {
+  font-size: 44px;
+  background: linear-gradient(90deg, #7aa2ff, #c77dff, #7aa2ff);
+  background-size: 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 30px rgba(160,180,255,0.45);
+  animation: glowText 6s linear infinite;
 }
 
-/* SUBTÍTULO */
-.subtitulo {
-  color: #ccc;
+@keyframes glowText {
+  to { background-position: 200%; }
+}
+
+.hero p {
+  margin-top: 12px;
   font-size: 18px;
+  color: #cfcfe6;
 }
 
-/* BOTÓN WHATSAPP */
+/* ===== BOTONES ===== */
 .btn-whatsapp {
-  margin-top: 20px;
-  background: #25d366;
+  margin-top: 22px;
+  background: linear-gradient(135deg, #25d366, #1ebc59);
   color: #000;
-  padding: 15px 28px;
-  font-size: 18px;
+  border: none;
+  padding: 14px 26px;
+  font-size: 17px;
   border-radius: 30px;
   cursor: pointer;
-  box-shadow: 0 0 22px rgba(37,211,102,0.85);
-  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 0 25px rgba(37,211,102,.45);
+  transition: transform .2s ease, box-shadow .2s ease;
 }
 
 .btn-whatsapp:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 30px rgba(37,211,102,1);
+  box-shadow: 0 0 40px rgba(37,211,102,.7);
 }
 
-/* INFO */
 .whatsapp-info {
   font-size: 14px;
-  color: #bbb;
+  color: #aaa;
   margin-top: 10px;
 }
 
-/* IMAGEN PRINCIPAL */
+/* ===== IMAGEN PRINCIPAL (MÁS PEQUEÑA) ===== */
 .hero-img img {
-  width: 100%;
+  width: 92%;
+  max-width: 900px;
   max-height: 360px;
   object-fit: cover;
-  border-radius: 14px;
+  border-radius: 18px;
+  margin: 25px auto;
   cursor: pointer;
-  box-shadow: 0 0 35px rgba(160,180,255,0.35);
+  box-shadow: 0 0 40px rgba(120,140,255,.25);
 }
 
-/* SECCIONES */
-.como-trabajamos,
-.quienes-somos {
-  padding: 30px;
+/* ===== COMO TRABAJAMOS ===== */
+.como-trabajamos {
+  padding: 35px 20px;
 }
 
-.pasos,
-.confianza {
+.como-trabajamos h2 {
+  margin-bottom: 20px;
+}
+
+.pasos {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(160px,1fr));
+  gap: 16px;
 }
 
-/* GALERÍA */
+.pasos div {
+  background: rgba(255,255,255,.03);
+  padding: 14px;
+  border-radius: 14px;
+  backdrop-filter: blur(6px);
+}
+
+/* ===== GALERÍA (CLAVE: MÁS PEQUEÑAS) ===== */
 .galeria {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 15px;
-  padding: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap: 18px;
+  padding: 20px 20px 10px;
 }
 
 .galeria img {
   width: 100%;
-  height: 220px;
+  max-height: 240px;
   object-fit: cover;
-  border-radius: 14px;
+  border-radius: 16px;
   cursor: pointer;
-  box-shadow: 0 0 35px rgba(160,180,255,0.35);
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform .3s ease, box-shadow .3s ease;
+  box-shadow: 0 0 25px rgba(120,140,255,.18);
 }
 
 .galeria img:hover {
-  transform: scale(1.06);
-  box-shadow: 0 0 45px rgba(190,210,255,0.6);
+  transform: scale(1.05);
+  box-shadow: 0 0 45px rgba(170,120,255,.5);
 }
 
-/* MODAL */
+/* ===== CONFIANZA ===== */
+.confianza {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px,1fr));
+  gap: 16px;
+  padding: 25px;
+}
+
+/* ===== QUIENES SOMOS ===== */
+.quienes-somos {
+  max-width: 820px;
+  margin: auto;
+  padding: 35px 20px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #ddd;
+}
+
+/* ===== MODAL ===== */
 .modal {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.9);
+  background: rgba(0,0,0,.85);
   justify-content: center;
   align-items: center;
-  z-index: 10;
+  z-index: 20;
 }
 
 .modal-contenido {
-  background: #0b0e2a;
-  padding: 25px;
+  background: #0c0c18;
+  padding: 26px;
   border-radius: 18px;
   width: 90%;
   max-width: 400px;
+  box-shadow: 0 0 50px rgba(120,140,255,.3);
 }
 
-/* FOOTER */
+.cerrar {
+  float: right;
+  cursor: pointer;
+  font-size: 22px;
+}
+
+.precio {
+  margin-top: 16px;
+  font-size: 18px;
+}
+
+.nota-precio {
+  font-size: 13px;
+  color: #aaa;
+  margin-top: 10px;
+}
+
+/* ===== FOOTER ===== */
 footer {
-  padding: 20px;
+  padding: 22px;
   font-size: 14px;
+  color: #aaa;
 }
 
 footer a {
-  color: #b7c5ff;
+  color: #9aa8ff;
   text-decoration: none;
 }
 
-/* COOKIES */
+/* ===== COOKIES ===== */
 .cookies {
   position: fixed;
   bottom: 0;
   width: 100%;
-  background: #040621;
+  background: rgba(10,10,20,.95);
   padding: 10px;
   font-size: 14px;
+  z-index: 30;
 }
 
-/* WHATSAPP FLOTANTE */
+/* ===== WHATSAPP FLOTANTE ===== */
 .whatsapp-float {
   position: fixed;
   bottom: 80px;
   right: 20px;
-  width: 56px;
-  height: 56px;
   background: #25d366;
+  width: 58px;
+  height: 58px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 22px rgba(37,211,102,0.95);
-  transition: transform 0.2s;
+  box-shadow: 0 0 35px rgba(37,211,102,.8);
+  animation: pulse 2.5s infinite;
+  z-index: 25;
 }
 
-.whatsapp-float:hover {
-  transform: scale(1.1);
+@keyframes pulse {
+  0% { box-shadow: 0 0 20px rgba(37,211,102,.6); }
+  50% { box-shadow: 0 0 45px rgba(37,211,102,1); }
+  100% { box-shadow: 0 0 20px rgba(37,211,102,.6); }
+}
+/* ===== CORRECCIÓN TAMAÑO LOGO EN ORDENADOR ===== */
+.hero img,
+.hero-logo,
+.logo {
+  max-width: 220px;
+  width: 100%;
+  height: auto;
+  margin: 0 auto 20px;
 }
 
-.whatsapp-float img {
-  width: 30px;
-}
-
-/* 💼 PORTFOLIO (PREPARADO PARA VENDER WEBS) */
-.portfolio {
-  padding: 40px 20px;
-}
-
-.portfolio-item {
-  background: rgba(255,255,255,0.03);
-  border-radius: 16px;
-  padding: 20px;
-  box-shadow: 0 0 25px rgba(160,180,255,0.2);
+/* En pantallas grandes, que NO crezca más */
+@media (min-width: 1024px) {
+  .hero img,
+  .hero-logo,
+  .logo {
+    max-width: 200px;
+  }
 }
