@@ -3,42 +3,142 @@
   font-family: Arial, sans-serif;
 }
 
+/* 🌌 FONDO PROFUNDO CINE */
 body {
   margin: 0;
-  background: #0b0b0b;
+  background: radial-gradient(circle at top, #080a1f, #01020a);
   color: #fff;
   text-align: center;
+  overflow-x: hidden;
 }
 
-/* HERO */
+/* 🌟 ESTRELLAS MULTICAPA + MOVIMIENTO */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(1.2px 1.2px at 10% 20%, #ffffff, transparent),
+    radial-gradient(1.4px 1.4px at 30% 80%, #cfd8ff, transparent),
+    radial-gradient(1.6px 1.6px at 50% 40%, #ffffff, transparent),
+    radial-gradient(1.3px 1.3px at 70% 10%, #e0e6ff, transparent),
+    radial-gradient(1.5px 1.5px at 90% 60%, #ffffff, transparent),
+    radial-gradient(1.2px 1.2px at 40% 60%, #cfd8ff, transparent),
+    radial-gradient(1.4px 1.4px at 60% 90%, #ffffff, transparent);
+  background-size: 160px 160px;
+  animation: estrellas 85s linear infinite;
+  opacity: 0.7;
+  pointer-events: none;
+  z-index: -1;
+  filter: drop-shadow(0 0 6px rgba(180,200,255,0.9));
+}
+
+@keyframes estrellas {
+  from { transform: translateY(0); }
+  to { transform: translateY(-1400px); }
+}
+
+/* ✨ APARICIONES SUAVES */
+.hero,
+.hero-img,
+.como-trabajamos,
+.galeria,
+.confianza,
+.quienes-somos {
+  animation: fadeUp 1.3s ease forwards;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 🎬 HERO (PREPARADO PARA VÍDEO) */
 .hero {
   padding: 40px 20px;
+  position: relative;
+  z-index: 1;
 }
 
-.hero h1 {
-  font-size: 42px;
-  margin-bottom: 10px;
+/* Si en el futuro añades <video class="hero-video"> */
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  opacity: 0.25;
+  filter: blur(1px);
 }
 
-.hero p {
-  font-size: 18px;
+/* LOGO */
+.logo {
+  width: 140px;
+  margin-bottom: 15px;
+}
+
+/* TÍTULO */
+.titulo {
+  font-size: 46px;
+  background: linear-gradient(90deg, #9bb6ff, #cfa3ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 30px rgba(160,180,255,0.45);
+}
+
+/* SUBTÍTULO */
+.subtitulo {
   color: #ccc;
+  font-size: 18px;
 }
 
-/* BOTÓN */
+/* BOTÓN WHATSAPP */
 .btn-whatsapp {
   margin-top: 20px;
   background: #25d366;
   color: #000;
-  border: none;
-  padding: 15px 25px;
+  padding: 15px 28px;
   font-size: 18px;
   border-radius: 30px;
   cursor: pointer;
+  box-shadow: 0 0 22px rgba(37,211,102,0.85);
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .btn-whatsapp:hover {
-  background: #1ebc59;
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(37,211,102,1);
+}
+
+/* INFO */
+.whatsapp-info {
+  font-size: 14px;
+  color: #bbb;
+  margin-top: 10px;
+}
+
+/* IMAGEN PRINCIPAL */
+.hero-img img {
+  width: 100%;
+  max-height: 360px;
+  object-fit: cover;
+  border-radius: 14px;
+  cursor: pointer;
+  box-shadow: 0 0 35px rgba(160,180,255,0.35);
+}
+
+/* SECCIONES */
+.como-trabajamos,
+.quienes-somos {
+  padding: 30px;
+}
+
+.pasos,
+.confianza {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 15px;
 }
 
 /* GALERÍA */
@@ -51,23 +151,36 @@ body {
 
 .galeria img {
   width: 100%;
-  border-radius: 12px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 14px;
+  cursor: pointer;
+  box-shadow: 0 0 35px rgba(160,180,255,0.35);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-/* CONFIANZA */
-.confianza {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 15px;
-  padding: 20px;
-  font-size: 16px;
+.galeria img:hover {
+  transform: scale(1.06);
+  box-shadow: 0 0 45px rgba(190,210,255,0.6);
 }
 
-/* QUIÉNES SOMOS */
-.quienes-somos {
-  padding: 30px;
-  max-width: 800px;
-  margin: auto;
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.modal-contenido {
+  background: #0b0e2a;
+  padding: 25px;
+  border-radius: 18px;
+  width: 90%;
+  max-width: 400px;
 }
 
 /* FOOTER */
@@ -77,50 +190,8 @@ footer {
 }
 
 footer a {
-  color: #7ddc9f;
+  color: #b7c5ff;
   text-decoration: none;
-}
-
-/* MODAL */
-.modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.8);
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-contenido {
-  background: #151515;
-  padding: 25px;
-  border-radius: 15px;
-  width: 90%;
-  max-width: 400px;
-}
-
-.cerrar {
-  float: right;
-  cursor: pointer;
-  font-size: 22px;
-}
-
-.precio {
-  margin-top: 15px;
-  font-size: 18px;
-}
-
-.nota-precio {
-  font-size: 13px;
-  color: #aaa;
-  margin-top: 10px;
-}
-
-/* WHATSAPP INFO */
-.whatsapp-info {
-  margin-top: 10px;
-  font-size: 14px;
-  color: #bbb;
 }
 
 /* COOKIES */
@@ -128,12 +199,43 @@ footer a {
   position: fixed;
   bottom: 0;
   width: 100%;
-  background: #111;
+  background: #040621;
   padding: 10px;
   font-size: 14px;
 }
 
-.cookies button {
-  margin-left: 10px;
-  padding: 5px 10px;
+/* WHATSAPP FLOTANTE */
+.whatsapp-float {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  background: #25d366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 22px rgba(37,211,102,0.95);
+  transition: transform 0.2s;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+}
+
+.whatsapp-float img {
+  width: 30px;
+}
+
+/* 💼 PORTFOLIO (PREPARADO PARA VENDER WEBS) */
+.portfolio {
+  padding: 40px 20px;
+}
+
+.portfolio-item {
+  background: rgba(255,255,255,0.03);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 0 25px rgba(160,180,255,0.2);
 }

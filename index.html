@@ -5,154 +5,183 @@
   <title>FBC Lights | Techos estrellados personalizados</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- SEO básico -->
-  <meta name="description" content="Especialistas en techos estrellados personalizados para coches. Instalación profesional, material premium y presupuesto por WhatsApp.">
-  <meta name="keywords" content="techo estrellado coche, estrellas coche, fibra óptica coche, fbc lights">
-  <meta name="author" content="FBC Lights">
+  <meta name="description" content="FBC Lights - Especialistas en techos estrellados personalizados para coches.">
 
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- HERO -->
-  <header class="hero">
-    <h1>FBC Lights</h1>
-    <p>Especialistas en Techos Estrellados Personalizados para tu coche.</p>
-    <button class="btn-whatsapp" onclick="abrirModal()">Pide tu presupuesto por WhatsApp</button>
-  </header>
+<header class="hero">
+  <img src="imagenes/logo.png" class="logo" alt="FBC Lights logo">
 
-  <!-- GALERÍA -->
-  <section class="galeria">
-    <img src="imagenes/techo1.jpg" alt="Techo estrellado coche">
-    <img src="imagenes/techo2.jpg" alt="Techo estrellado fibra óptica">
-    <img src="imagenes/techo3.jpg" alt="Techo estrellado interior coche">
-    <img src="imagenes/techo4.jpg" alt="Techo estrellado premium">
-  </section>
+  <h1 class="titulo">FBC Lights</h1>
+  <p class="subtitulo">
+    Especialistas en Techos Estrellados Personalizados para tu coche.
+  </p>
 
-  <!-- BLOQUE CONFIANZA -->
-  <section class="confianza">
-    <div>⭐ Instalación profesional</div>
-    <div>💎 Material premium</div>
-    <div>🚗 Todo tipo de coches</div>
-    <div>✨ Personalización total</div>
-  </section>
+  <button class="btn-whatsapp" onclick="abrirModal()">
+    💬 Pide tu presupuesto por WhatsApp
+  </button>
 
-  <!-- QUIÉNES SOMOS -->
-  <section class="quienes-somos">
-    <h2>¿Quiénes somos?</h2>
-    <p>
-      En <strong>FBC Lights</strong> somos especialistas en la instalación de techos estrellados para vehículos.
-      Trabajamos con fibra óptica de alta calidad y cuidamos cada detalle para ofrecer un resultado espectacular,
-      elegante y totalmente personalizado.
+  <p class="whatsapp-info">
+    📲 Respuesta rápida por WhatsApp <br>
+    ⏱️ Normalmente contestamos en menos de 24h
+  </p>
+</header>
+
+<section class="hero-img" onclick="abrirModal()">
+  <img src="imagenes/techo1.jpg" alt="Techo estrellado FBC Lights">
+</section>
+
+<section class="como-trabajamos">
+  <h2>Cómo trabajamos</h2>
+  <div class="pasos">
+    <div>📲 Contacto por WhatsApp</div>
+    <div>📝 Asesoramiento personalizado</div>
+    <div>🔧 Instalación profesional</div>
+    <div>✨ Entrega y garantía</div>
+  </div>
+</section>
+
+<section class="galeria">
+  <img src="imagenes/techo2.jpg" onclick="abrirModal()">
+  <img src="imagenes/techo3.jpg" onclick="abrirModal()">
+  <img src="imagenes/techo4.jpg" onclick="abrirModal()">
+</section>
+
+<section class="confianza">
+  <div>⭐ Instalación profesional</div>
+  <div>💎 Material premium</div>
+  <div>🚗 Todo tipo de coches</div>
+  <div>✨ Personalización total</div>
+</section>
+
+<section class="quienes-somos">
+  <h2>¿Quiénes somos?</h2>
+  <p>
+    En <strong>FBC Lights</strong> somos especialistas en la instalación de
+    techos estrellados personalizados para vehículos.
+    Trabajamos con fibra óptica de alta calidad y cuidamos cada detalle
+    para ofrecer un resultado elegante, exclusivo y totalmente a medida.
+  </p>
+</section>
+
+<!-- MODAL -->
+<div id="modal" class="modal">
+  <div class="modal-contenido">
+    <span class="cerrar" onclick="cerrarModal()">×</span>
+
+    <h2>Presupuesto estimado</h2>
+
+    <select id="estrellas" onchange="calcularPrecio()">
+      <option value="">Selecciona estrellas</option>
+      <option value="500">⭐ 500 – 499 €</option>
+      <option value="600">⭐ 600 – 550 €</option>
+      <option value="750">⭐ 750 – 700 €</option>
+      <option value="1200">⭐ 1200 – 850 €</option>
+      <option value="2000">⭐ 2000 – 1450 €</option>
+    </select>
+
+    <p class="precio">
+      Precio total: <strong><span id="precio">0</span> €</strong>
     </p>
-  </section>
 
-  <!-- FOOTER -->
-  <footer>
-    <a href="aviso-legal.html">Aviso legal</a> |
-    <a href="privacidad.html">Política de privacidad</a> |
-    <a href="cookies.html">Política de cookies</a>
-  </footer>
-
-  <!-- MODAL PRESUPUESTO -->
-  <div id="modal" class="modal">
-    <div class="modal-contenido">
-      <span class="cerrar" onclick="cerrarModal()">×</span>
-
-      <h2>Presupuesto estimado</h2>
-
-      <label>
-        Número de estrellas:
-        <select id="estrellas" onchange="calcularPrecio()">
-          <option value="">Selecciona</option>
-          <option value="500">⭐ 500 estrellas – 499 €</option>
-          <option value="600">⭐ 600 estrellas – 550 €</option>
-          <option value="750">⭐ 750 estrellas – 700 €</option>
-          <option value="1200">⭐ 1200 estrellas – 850 €</option>
-          <option value="2000">⭐ 2000 estrellas – 1450 €</option>
-        </select>
-      </label>
-
-      <p class="precio">
-        Precio total: <strong><span id="precio">0</span> €</strong>
-      </p>
-
-      <p class="nota-precio">
-        💡 El precio puede variar según el modelo del vehículo y opciones adicionales.
-      </p>
-
-      <button class="btn-whatsapp" onclick="enviarWhatsApp()">Enviar presupuesto por WhatsApp</button>
-
-      <p class="whatsapp-info">
-        📲 Respuesta rápida por WhatsApp <br>
-        ⏱️ Normalmente contestamos en menos de 24h
-      </p>
-    </div>
+    <button class="btn-whatsapp" onclick="enviarWhatsApp()">
+      Enviar presupuesto por WhatsApp
+    </button>
   </div>
+</div>
 
-  <!-- COOKIES -->
-  <div id="cookies" class="cookies">
-    Utilizamos cookies técnicas para mejorar la experiencia del usuario.
-    <a href="cookies.html">Más información</a>
-    <button onclick="aceptarCookies()">Aceptar</button>
-    <button onclick="rechazarCookies()">Rechazar</button>
-  </div>
+<footer>
+  <a href="quienes-somos.html">Quiénes somos</a> |
+  <a href="aviso-legal.html">Aviso legal</a> |
+  <a href="privacidad.html">Privacidad</a> |
+  <a href="cookies.html">Cookies</a>
+</footer>
 
-  <!-- SCRIPTS -->
-  <script>
-    function abrirModal() {
-      document.getElementById("modal").style.display = "flex";
-    }
+<!-- WhatsApp flotante -->
+<a href="https://wa.me/34643960819" class="whatsapp-float" target="_blank">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+</a>
 
-    function cerrarModal() {
-      document.getElementById("modal").style.display = "none";
-    }
+<!-- Cookies -->
+<div id="cookies" class="cookies">
+  Utilizamos cookies técnicas para mejorar la experiencia del usuario.
+  <a href="cookies.html">Más información</a>
+  <button onclick="aceptarCookies()">Aceptar</button>
+  <button onclick="rechazarCookies()">Rechazar</button>
+</div>
 
-    function calcularPrecio() {
-      const estrellas = document.getElementById("estrellas").value;
-      let precio = 0;
-
-      if (estrellas == 500) precio = 499;
-      if (estrellas == 600) precio = 550;
-      if (estrellas == 750) precio = 700;
-      if (estrellas == 1200) precio = 850;
-      if (estrellas == 2000) precio = 1450;
-
-      document.getElementById("precio").innerText = precio;
-    }
-
-    function enviarWhatsApp() {
-      const estrellas = document.getElementById("estrellas").value;
-      const precio = document.getElementById("precio").innerText;
-
-      let mensaje =
-`Hola 👋
+<script>
+function abrirModal() {
+  document.getElementById("modal").style.display = "flex";
+}
+function cerrarModal() {
+  document.getElementById("modal").style.display = "none";
+}
+function calcularPrecio() {
+  const e = document.getElementById("estrellas").value;
+  let p = 0;
+  if (e == 500) p = 499;
+  if (e == 600) p = 550;
+  if (e == 750) p = 700;
+  if (e == 1200) p = 850;
+  if (e == 2000) p = 1450;
+  document.getElementById("precio").innerText = p;
+}
+function enviarWhatsApp() {
+  const e = document.getElementById("estrellas").value;
+  const p = document.getElementById("precio").innerText;
+  const msg = `Hola 👋
 Quiero información y presupuesto para un techo estrellado.
 
-✨ Número de estrellas: ${estrellas}
-💰 Precio estimado: ${precio} €
+✨ Estrellas: ${e}
+💰 Precio: ${p} €
 
-🚗 Modelo de coche:
+🚗 Modelo:
 📍 Ciudad:`;
+  window.open("https://wa.me/34643960819?text=" + encodeURIComponent(msg));
+}
+function aceptarCookies() {
+  document.getElementById("cookies").style.display = "none";
+  localStorage.setItem("cookies", "ok");
+}
+function rechazarCookies() {
+  document.getElementById("cookies").style.display = "none";
+}
+if (localStorage.getItem("cookies")) {
+  document.getElementById("cookies").style.display = "none";
+}
+</script>
+<!-- CAPAS DE ESTRELLAS -->
+<div id="stars"></div>
+<div id="stars2"></div>
+<div id="stars3"></div>
 
-      const telefono = "34643960819";
-      const url = "https://wa.me/" + telefono + "?text=" + encodeURIComponent(mensaje);
-      window.open(url, "_blank");
-    }
+<script>
+/* 🌠 ESTRELLAS FUGACES ALEATORIAS */
+setInterval(() => {
+  const star = document.createElement("div");
+  star.className = "shooting-star";
+  star.style.left = Math.random() * window.innerWidth + "px";
+  star.style.top = Math.random() * 200 + "px";
+  document.body.appendChild(star);
 
-    function aceptarCookies() {
-      document.getElementById("cookies").style.display = "none";
-      localStorage.setItem("cookiesAceptadas", "true");
-    }
+  setTimeout(() => star.remove(), 1200);
+}, 6000);
 
-    function rechazarCookies() {
-      document.getElementById("cookies").style.display = "none";
-    }
+/* 🖱️ PARALLAX CON RATÓN */
+document.addEventListener("mousemove", e => {
+  const x = (e.clientX / window.innerWidth - 0.5) * 20;
+  const y = (e.clientY / window.innerHeight - 0.5) * 20;
 
-    if (localStorage.getItem("cookiesAceptadas")) {
-      document.getElementById("cookies").style.display = "none";
-    }
-  </script>
-
+  document.getElementById("stars").style.transform =
+    `translate(${x}px, ${y}px)`;
+  document.getElementById("stars2").style.transform =
+    `translate(${x * 1.5}px, ${y * 1.5}px)`;
+  document.getElementById("stars3").style.transform =
+    `translate(${x * 2}px, ${y * 2}px)`;
+});
+</script>
 </body>
 </html>
